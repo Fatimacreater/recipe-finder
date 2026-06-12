@@ -43,7 +43,7 @@ https://www.themealdb.com/api.php
 
 ## Screenshots
 
-Add screenshots inside the `screenshots` folder and update this section.
+<img width="1338" height="632" alt="image" src="https://github.com/user-attachments/assets/6646abe3-2e9f-4eee-9ddd-0b6fdbaf2040" />
 
 ## Future Improvements
 
@@ -58,7 +58,6 @@ Add screenshots inside the `screenshots` folder and update this section.
 
 fatima shaikh 
 
-<img width="1338" height="632" alt="image" src="https://github.com/user-attachments/assets/6646abe3-2e9f-4eee-9ddd-0b6fdbaf2040" />
 
 
 
