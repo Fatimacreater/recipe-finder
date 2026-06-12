@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: #f4f6f9;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* Search Box */
+
+.search-box{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.search-box input{
+    width: 350px;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box input:focus{
+    border-color: #ff7043;
+}
+
+.search-box button{
+    padding: 12px 20px;
+    border: none;
+    background: #ff7043;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover{
+    background: #f4511e;
+}
+
+/* Recipe Grid */
+
+#recipes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+}
+
+/* Recipe Card */
+
+#recipes > div{
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding-bottom: 15px;
+    transition: 0.3s;
+}
+
+#recipes > div:hover{
+    transform: translateY(-5px);
+}
+
+#recipes img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+#recipes h2{
+    padding: 15px 15px 5px;
+    color: #222;
+}
+
+#recipes p{
+    padding: 0 15px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* View Button */
+
+#recipes button{
+    margin: 10px 15px;
+    padding: 10px 15px;
+    border: none;
+    background: #4caf50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#recipes button:hover{
+    background: #388e3c;
+}
+
+/* Recipe Details */
+
+.hidden{
+    display: none;
+}
+
+#recipes div div{
+    margin: 10px 15px;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#recipes div div h2{
+    padding: 0;
+    margin-bottom: 10px;
+    color: #ff7043;
+}
+
+#recipes div div p{
+    padding: 0;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Messages */
+
+#recipes > h2{
+    text-align: center;
+    color: #666;
+    grid-column: 1/-1;
+    margin-top: 30px;
+}
+
+/* Mobile */
+
+@media(max-width: 500px){
+
+    .search-box{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box input{
+        width: 100%;
+    }
+
+    .search-box button{
+        width: 100%;
+    }
+}
