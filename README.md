@@ -2,6 +2,8 @@
 
 A responsive Recipe Finder application built using HTML, CSS, and JavaScript.
 
+🚀 Live Demo: https://fatimacreater.github.io/recipe-finder/
+
 ## Features
 
 * Search recipes by name
