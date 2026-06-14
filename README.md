@@ -45,7 +45,7 @@ https://www.themealdb.com/api.php
 
 ## Screenshots
 
-<img width="1338" height="632" alt="image" src="https://github.com/user-attachments/assets/6646abe3-2e9f-4eee-9ddd-0b6fdbaf2040" />
+<img width="1332" height="634" alt="image" src="https://github.com/user-attachments/assets/e016a1cc-37be-45bd-8b78-a5393b2e9e89" />
 
 ## Future Improvements
 
