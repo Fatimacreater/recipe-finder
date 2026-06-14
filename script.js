@@ -1,23 +1,22 @@
 let inp = document.querySelector("#inp");
 let search = document.querySelector("#btn");
 let recipes = document.querySelector("#recipes");
+let clearBtn = document.querySelector("#clear-history");
 
+let history = JSON.parse(localStorage.getItem("history")) || [];
 
  async function getrecipe() {
              let value = inp.value.trim();
-             let mesg = document.createElement("h2");
-            mesg.textContent = "Loading...";
-            recipes.appendChild(mesg);
-
+          
             const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
-           try{            
+           try{
+              spinner.classList.remove("hidden"); 
+
              const recipe = await fetch(url);
             if(!recipe.ok){throw new Error("Request Failed");}
             let data = await recipe.json();
             
-            if(data.meals){
-                recipes.removeChild(mesg);
-                
+            if(data.meals){                
                 data.meals.forEach(element => {
                     let card = document.createElement("div");                    
                     let img = document.createElement("img");
@@ -71,13 +70,15 @@ let recipes = document.querySelector("#recipes");
                     card.appendChild(detail_btn);
                     card.appendChild(detail);                    
                     detail.appendChild(instruction);                 
-                    recipes.appendChild(card);                    
+                    recipes.appendChild(card);  
+                    
+                    spinner.classList.add("hidden"); 
                 })            
             }
             else{
+                spinner.classList.add("hidden"); 
                 let nothing = document.createElement("h2");                    
-                nothing.textContent = "no recipe is found";
-                recipes.removeChild(mesg);
+                nothing.textContent = "No recipes found";
                 recipes.appendChild(nothing);
             }
            
@@ -87,20 +88,76 @@ let recipes = document.querySelector("#recipes");
             recipes.innerHTML = "";
             console.log(err);
             let error = document.createElement("h2");
-            error.textContent = "Something went wrong";
+            error.textContent = "Failed to fetch recipes. Please try again.";
             recipes.appendChild(error);
 
+           }
+           finally{
+            search.disabled = false;
            }
            
               }
 
-
 search.addEventListener("click" , function(){
-   
     if(inp.value.trim() === ""){alert("write something"); return};
 
-    recipes.innerHTML = "";
 
+let searchTerm = inp.value.trim();
+
+if(!history.includes(searchTerm)){
+    history.push(searchTerm);
+}
+
+localStorage.setItem("history", JSON.stringify(history));    
+
+displayHistory();
+
+recipes.innerHTML = "";
+    search.disabled = true;
     getrecipe();
     inp.value = "";
 })
+
+inp.addEventListener("keydown" , (e) =>{
+    if(e.key === "Enter"){
+        search.click();
+    }
+})
+
+function displayHistory(){
+
+    let historyBox = document.querySelector("#history");
+ 
+    historyBox.innerHTML = "";
+
+    let history = JSON.parse(localStorage.getItem("history")) || [];
+
+    history = history.slice(-5).reverse();
+
+    history.forEach(item => {
+
+        let btn = document.createElement("button");
+
+        btn.textContent = item;
+
+        btn.addEventListener("click", () => {
+            inp.value = item;
+            search.click();
+        });
+
+        historyBox.appendChild(btn);
+
+    });
+}
+displayHistory();
+
+clearBtn.addEventListener("click", () => {
+
+    if(confirm("Clear search history?")){
+
+      localStorage.removeItem("history");
+        displayHistory();
+
+    }
+
+});
