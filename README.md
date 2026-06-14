@@ -49,16 +49,14 @@ https://www.themealdb.com/api.php
 
 ## Future Improvements
 
-* Search on Enter key press
 * Add recipe modal popup
 * Save favorite recipes
 * Dark mode
 * Pagination
-* Loading spinner
 
 ## Author
 
-fatima shaikh 
+Fatima Shaikh 
 
 
 
