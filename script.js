@@ -85,6 +85,7 @@ let history = JSON.parse(localStorage.getItem("history")) || [];
         }
             
             catch(err){
+            spinner.classList.add("hidden");
             recipes.innerHTML = "";
             console.log(err);
             let error = document.createElement("h2");
@@ -93,7 +94,8 @@ let history = JSON.parse(localStorage.getItem("history")) || [];
 
            }
            finally{
-            search.disabled = false;
+            spinner.classList.add("hidden");
+   search.disabled = false;
            }
            
               }
